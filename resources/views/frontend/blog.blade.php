@@ -150,4 +150,33 @@
         </div>
     </section>
     <!-- Portfolio-Area-End -->
+
+    <!-- Quote-Area-Start -->
+    <section class="quote-area section-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="quote-box">
+
+                        <div class="row ">
+                            <div class="col-lg-6 offset-lg-3">
+                                <div class="quote-content">
+                                    <h3 class="title">Start Journey Today</h3>
+                                    <div class="desc">
+                                        <p>Earum quos animi numquam excepturi eveniet explicabo repellendus rem
+                                            esse.
+                                            Quae quasi
+                                            odio enim.</p>
+                                    </div>
+                                    <a href="#" class="button-orange mouse-dir">Get Started <span
+                                            class="dir-part"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Quote-Area-End -->
 @endsection
