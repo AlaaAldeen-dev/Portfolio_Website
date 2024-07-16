@@ -23,6 +23,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/components.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -34,14 +35,6 @@
             <div class="main-content">
                 @yield('content')
             </div>
-            {{-- <footer class="main-footer">
-  <div class="footer-left">
-    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
-  </div>
-  <div class="footer-right">
-    2.3.0
-  </div>
-</footer> --}}
         </div>
     </div>
 
@@ -77,6 +70,19 @@
     <script src="{{ asset('assets') }}/js/page/features-post-create.js"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets') }}/js/page/forms-advanced-forms.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    // Show dynamic validation errors
+    <script>
+
+
+        @if (!empty($errors->all()))
+            @foreach ($errors->all() as $error)
+                toastr.error("{{$error}}",)
+            @endforeach
+        @endif
+    </script>
+
 </body>
 
 </html>
