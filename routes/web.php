@@ -3,11 +3,15 @@
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Hero\HeroController;
 use App\Http\Controllers\Admin\Profile\ProfileController;
+use App\Http\Controllers\Admin\Typer_Title\TyperTitleController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+// Route::get('/', function () {
+//     return view('frontend.home');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('blog', function () {
     return view('frontend.blog');
@@ -34,6 +38,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     /* Hero Routes */
     Route::resource('hero', HeroController::class);
+    Route::resource('typer-title', TyperTitleController::class);
 });
 
 require __DIR__.'/auth.php';

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateHeroRequest;
 use App\Models\Hero;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class HeroController extends Controller
 {
@@ -14,7 +15,8 @@ class HeroController extends Controller
      */
     public function index()
     {
-        return view('admin.hero.index');
+        $hero = Hero::first();
+        return view('admin.hero.index', compact('hero'));
     }
 
     /**
@@ -54,8 +56,13 @@ class HeroController extends Controller
      */
     public function update(UpdateHeroRequest $request, string $id)
     {
+        $hero = Hero::first();
         if($request->hasFile('image'))
         {
+            if($hero && File::exists(public_path($hero->image)))
+            {
+                File::delete(public_path($hero->image));
+            }
             $image = $request->file('image');
             $imageName = rand().$image->getClientOriginalName();
             $image->move(public_path('/uploads'), $imageName );
@@ -68,7 +75,7 @@ class HeroController extends Controller
                 'sub_title' => $request->sub_title,
                 'btn_text' => $request->btn_text,
                 'btn_url' => $request->btn_url,
-                'image' => isset($imagePath) ? $imagePath : ''
+                'image' => isset($imagePath) ? $imagePath : $hero->image
             ]
         );
 

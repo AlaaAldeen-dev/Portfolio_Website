@@ -16,36 +16,51 @@
                             <h4>Update Hero Section</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('admin.hero.update', 1)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.hero.update', 1) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="title">
+                                        <input type="text" class="form-control" name="title"
+                                            value="{{ @$hero->title }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub Title</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="sub_title" id="" class="form-control" style="height: 100px"></textarea>
+                                        <textarea name="sub_title" id="" class="form-control" style="height: 100px">{{ @$hero->sub_title }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button Text</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="btn_text">
+                                        <input type="text" class="form-control" name="btn_text"
+                                            value="{{ @$hero->btn_text }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Button Url</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="btn_url">
+                                        <input type="text" class="form-control" name="btn_url"
+                                            value="{{ @$hero->btn_url }}">
                                     </div>
                                 </div>
+
+                                @if ($hero->image)
+                                    <div class="form-group row mb-4">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Preview
+                                            Image</label>
+                                        <div class="col-sm-12 col-md-7">
+                                            <img src="{{ asset(@$hero->image) }}" class="w-25">
+                                        </div>
+
+                                    </div>
+                                @endif
+
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Image
